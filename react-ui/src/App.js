@@ -2,21 +2,13 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { render } from 'react-dom';
-import AceEditor from 'react-ace';
-
-import 'brace/mode/javascript';
-import 'brace/theme/monokai';
-
-function onChange(newValue) {
-  console.log('change',newValue);
-}
+import Kata from './components/kata';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
+      katas: [],
       fetching: true
     };
   }
@@ -30,19 +22,24 @@ class App extends Component {
         return response.json();
       })
       .then(json => {
+        console.log(json);
         this.setState({
-          message: json.message,
+          katas: json,
           fetching: false
         });
       }).catch(e => {
         this.setState({
-          message: `API call failed: ${e}`,
+          katas: [],
           fetching: false
         });
       })
   }
 
   render() {
+    const katas = this.state.katas.map(
+      ({description}, i) => <Kata key={i} id={i} description={description}/>
+    );
+    
     return (
       <div className="App">
         <div className="App-header">
@@ -55,18 +52,7 @@ class App extends Component {
             {'create-react-app with a custom Node/Express server'}
           </a><br/>
         </p>
-        <p className="App-intro">
-          {this.state.fetching
-            ? 'Fetching message from API'
-            : this.state.message}
-        </p>
-        <AceEditor
-          mode="javascript"
-          theme="monokai"
-          onChange={onChange}
-          name="UNIQUE_ID_OF_DIV"
-          editorProps={{$blockScrolling: true}}
-        />
+        {katas}
       </div>
     );
   }

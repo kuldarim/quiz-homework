@@ -14,20 +14,20 @@ admin.initializeApp({
 
 var db = admin.database();
 var ref = db.ref("server/saving-data/fireblog");
+var refKatas = db.ref("katas");
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-ref.on("value", function(snapshot) {
-  console.log(snapshot.val());
-}, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
-
 // Answer API requests.
 app.get('/api', function (req, res) {
   res.set('Content-Type', 'application/json');
-  res.send('{"message":"Hello from the custom server!"}');
+  refKatas.once("value", function(snapshot) {
+    console.log(snapshot.val());
+    res.send(snapshot.val());
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
   var usersRef = ref.child("users");
   usersRef.set({
     rimvydas_kulda: {
