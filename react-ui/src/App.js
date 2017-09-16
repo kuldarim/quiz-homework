@@ -37,9 +37,9 @@ class App extends Component {
 
   render() {
     const katas = this.state.katas.map(
-      ({description}, i) => <Kata key={i} id={i} description={description}/>
+      ({description, tests}, i) => <Kata key={i} id={i} description={description} tests={tests}/>
     );
-    
+
     return (
       <div className="App">
         <div className="App-header">
