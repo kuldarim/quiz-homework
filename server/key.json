@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "quiz-homework",
+  "private_key_id": "96e0c572dbe1ecaf5f9e8cc701fe135c081fe637",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDT9955V0UP5Jkn\nIoJIvSruu+RVrKg+NheCWF5/06af/bHCUbT5z2UHQZHOogE0U2tYTpFjocwgeZ67\nNZDOKNWmCFoopf2Jw5APdOApiSf/OGY7mzRqeaW6ioLJkACRYJauAJyow9QO9+O0\nf22Sh4gd56mHKY7wkTXU8qM4XRu0hWinOJKX1zSf+p2J65E2DRJeKW7IdQYwrhUL\nXBLW3Ye5UyPgejc/IBL5LWZfxogoHDuJlmzomIYtNKnheyXekXVjEUP68dNtWrV3\nVTrj+mnL/GwoQ9f9TrqFlsg9j2RbtZgoCj6aZ795nMLIOtFir8j5EWrruJ76qSUo\n1R6R1kuPAgMBAAECggEAAtBosaVH417FNpwm4+7B2hZAXJRABP0iI8SCbmGWUTlN\nzBAjfilBW3fydInnEcMg5jTfrkNMI/jN85tRzgwEBh18/F1PN+US1sLWG+J86c64\n8wYQZt5Vk5LH5nFL6KIwADc9uKC4XaY4tsE/Maiai/KFMUzUKMS/C7Z9Oq2xMtOs\nqk29IwZ3LKjkKjDpq5GlrsT5koHx+dm7DfaHAJjKKsQaLlVMBoW2+YKm1PHJ2fdF\n6w9y07SZqU9y9tleYJZt2ym40haIqA1BjRBps8RQLD7WP8Rb7PFGL1utT2QzPE45\nN0ZM5F6cR7sm7gQazo1r70/gfhOFq7oooQhUHhEvSQKBgQD/wmAWtXwBQ3UrOizX\nmrVZRLGBl/CkMa3tMyNsZ2pl2sEppPGOJC5R3YV8jizjdIyLIMKeMX/OZOcnYxNf\nTAYV+p09BpLSVseFZ5FEn5y5MqZQzs3bXoZvRZsq1ycXvVodY1jOivv2rWNd1Eq2\nl4MbS14JQQebMYwrFrXH8M3TFwKBgQDUKvE813COuX/Nf4jLv9FVZsiB+CVqMIRw\ne67rVRfoJGQtbSOM7vh1nTn7Nob6VMhyQAgmeeW6uuIDstPGasvjbTNy4yjWFaer\nYBRa7KkHtyfZ+qU3hj1WpNa+phV6hD7/APExvSQt/vpBiG3gYpJxe2alNL5UWheO\nDbixSDv2SQKBgFMtohaAm33FtJuEZgUQuZ34q0ocYhTkW05jbUfaMk5B4MRscmrp\n9W6Gft1NV+f5haPR2bmdG5XCVzMGE8zQasJHKVApjSJ/OpB2aFZLGqtYf6KUP3ry\nuQIDPz2lj383A9G+96jkpqFJLqHbYxkTGX6M+l5EGfctHAr/bctC042tAoGAHlMQ\n7chBHzUmLiH3VF/TNKifKexktJvAoi8bXiloZFanNtLtjNwvCOhy/BPcEPWDPMko\nIQ+1JQ5G9Y5etHJZN+VIwDf1gzvPHjB6WFCRDDhCauZnLNtz8ulWhCNK2JsEQgBJ\nePl2rVhPPoSYZ8TO94dSsXQra/UAft45MqWHZHkCgYEAsvMouPQjEA0OxoTk6B8k\nzUksHeMPIBT0iLgzgsQiHicbMlAvKBGB4ZZlXYNtFUiHWDFYEA1mtG/kiGn9Fpyj\nG3UouFhqYZIMBxba/8qvQqOgEGBSNv2tYk2Cfq5TZp/yhk9F8toNF3hNDnatLuxd\nzZC9ZYyDmPCTO0Q8PofwaaI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-xgioj@quiz-homework.iam.gserviceaccount.com",
+  "client_id": "108155565489355049435",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-xgioj%40quiz-homework.iam.gserviceaccount.com"
+}
