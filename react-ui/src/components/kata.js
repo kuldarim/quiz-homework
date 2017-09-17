@@ -10,37 +10,19 @@ import { putChangeTestStatus, putChangeSolution } from '../redux/reducers/reduce
 import ReactMarkdown from 'react-remarkable';
 import { Button } from 'reactstrap';
 
-import isEqual from 'lodash/isEqual';
+import { worker } from '../utils/worker';
 import './kata.css';
 
 class Kata extends Component {
   runTests() {
+    // return params[0].filter(p => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(p) === -1)
     this.props.kata.tests.forEach(({param, result}, i) => {
-      try {
-        const response = `
-        self.onmessage=function(){
-            postMessage(
-              eval(((...params) => {${this.props.kata.solution}})(${JSON.stringify(param)}))
-            )
-           self.close()
-      
-          }
-        `;
-
-        const runnable = new Blob([response], { type: "text/javascript" });
-        const worker = new Worker(window.URL.createObjectURL(runnable));
-
-        worker.onmessage = (e) => {
-          const evaluatedResult = e.data;
-          const status = isEqual(evaluatedResult, result);
-          this.props.putChangeTestStatus(this.props.kata.id, i, status);
-        };
-
-        worker.postMessage("WORK!!!");
-
-      } catch (error) {
-        console.log(error);
-      }
+        worker(
+          this.props.kata.solution,
+          param,
+          result,
+          (status) => this.props.putChangeTestStatus(this.props.kata.id, i, status)
+        )
     });
   }
   
