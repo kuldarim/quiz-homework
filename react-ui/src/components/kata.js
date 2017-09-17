@@ -5,7 +5,7 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
-import { putChangeTestStatus } from '../redux/reducers/reducer';
+import { putChangeTestStatus, putChangeSolution } from '../redux/reducers/reducer';
 
 import isEqual from 'lodash/isEqual';
 
@@ -14,7 +14,7 @@ class Kata extends Component {
     this.props.kata.tests.forEach(({param, result}, i) => {
       try {
         // return params[0].filter(p => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(p) === -1)
-        const evaluatedResult = eval(`((...params) => {${this.state.solution}})(${JSON.stringify(param)})`);
+        const evaluatedResult = eval(`((...params) => {${this.props.kata.solution}})(${JSON.stringify(param)})`);
         // const result = eval(`((...params) => {${newValue}})(["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"])`);
         const status = isEqual(evaluatedResult, result);
         this.props.putChangeTestStatus(this.props.kata.id, i, status);
@@ -25,7 +25,7 @@ class Kata extends Component {
   }
   
   onChange(newValue) {
-    this.state.solution = newValue;
+    this.props.putChangeSolution(this.props.kata.id, newValue)
   }
   
   //   // console.log('@props', this.props);
@@ -78,5 +78,5 @@ class Kata extends Component {
   }
 }
 
-const mapDispatch = {putChangeTestStatus};
+const mapDispatch = {putChangeTestStatus, putChangeSolution};
 export default connect(null, mapDispatch)(Kata);
