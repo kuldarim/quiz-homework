@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Kata from './kata';
+import KataTest from './kata-test'
 
 class KatasList extends Component {
   constructor(props) {
@@ -16,7 +17,10 @@ class KatasList extends Component {
             if (!kata)
               return <div>a</div>
             return (
-              <Kata key={i} kata={{...kata, id: i}}/>
+              <div key={`${i}-kata`}>
+                <Kata kata={{...kata, id: i}}/>
+                <KataTest kata={{...kata, id: i}}/>
+              </div>
             )
           })
         }

@@ -58,7 +58,6 @@ class Kata extends Component {
   }
   
   render() {
-    
     return (
       <div>
         <div>{this.props.kata.description}</div>
@@ -67,6 +66,7 @@ class Kata extends Component {
           theme="monokai"
           name={`${this.props.kata.id}`}
           onChange={this.onChange}
+          value={this.props.kata.solution}
           setOptions={{
             showLineNumbers: true,
             tabSize: 2,

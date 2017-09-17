@@ -23,10 +23,10 @@ const reducer = (state = initial, action) => {
       return {...state, katas: action.katas };
     case CHANGE_STATUS:
       state.katas[action.kataId].tests[action.testId].status = action.status;
-      return { ...state, katas: state.katas };
+      return { ...state, katas: [...state.katas] };
     case CHANGE_SOLUTION:
       state.katas[action.kataId].solution = action.solution;
-      return { ...state, katas: state.katas };
+      return { ...state, katas: [...state.katas] };
     default:
       return state;
   }
