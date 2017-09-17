@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import AceEditor from 'react-ace';
-
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
+
+import { putChangeStatus } from '../redux/reducers/reducer';
+
+import isEqual from 'lodash/isEqual';
 
 class Kata extends Component {
   runTests() {
@@ -17,6 +21,8 @@ class Kata extends Component {
         // todo lodash equals
         console.log('@eval', evaluatedResult);
         console.log('@result', result);
+        console.log(isEqual(evaluatedResult, result));
+        this.props.putChangeStatus(this.props.description, isEqual(evaluatedResult, result));
       } catch (error) {
         console.log(error);
       }
@@ -60,20 +66,22 @@ class Kata extends Component {
     
     return (
       <div>
-      <div>{this.props.description}</div>
-      <AceEditor
-      mode="javascript"
-      theme="monokai"
-      name={`${this.props.id}`}
-      onChange={this.onChange}
-      setOptions={{
-        showLineNumbers: true,
-        tabSize: 2,
-      }}/>
-      <button onClick={() => this.runTests()}>test</button>
+        <div>{this.props.description}</div>
+        <AceEditor
+          mode="javascript"
+          theme="monokai"
+          name={`${this.props.id}`}
+          onChange={this.onChange}
+          setOptions={{
+            showLineNumbers: true,
+            tabSize: 2,
+          }}
+        />
+        <button onClick={() => this.runTests()}>test</button>
       </div>
     );
   }
 }
 
-export default Kata;
+const mapDispatch = {putChangeStatus};
+export default connect(null, mapDispatch)(Kata);
