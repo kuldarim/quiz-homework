@@ -8,8 +8,7 @@ const CHANGE_STATUS = "CHANGE_STATUS";
 /////////////////ACTIONS//////////////
 
 const getKatas = (katas) => ({type: GET_ALL_KATAS, katas});
-const changeStatus = (kata, bool) => ({type: CHANGE_STATUS, kata, bool});
-
+const changeTestStatus = (kataId, testId, status) => ({type: CHANGE_STATUS, kataId, testId, status});
 
 /////////////////REDUCER/////////////////////
 
@@ -19,17 +18,15 @@ let initial = {
 };
 
 const reducer = (state = initial, action) => {
-  console.log(action);
   switch (action.type) {
     case GET_ALL_KATAS:
       return {...state, katas: action.katas };
     case CHANGE_STATUS:
-      console.log(action);
-      return {...state, katas: state.katas };
+      state.katas[action.kataId].tests[action.testId].status = action.status;
+      return { ...state, katas: state.katas };
     default:
       return state;
   }
-
 };
 
 export default reducer;
@@ -50,6 +47,6 @@ export const getAllKatas = () => dispatch => {
     })
 };
 
-export const putChangeStatus = (kata, bool) => (dispatch) => {
-  dispatch(changeStatus(kata, bool));
+export const putChangeTestStatus = (kataId, testId, status) => (dispatch) => {
+  dispatch(changeTestStatus(kataId, testId, status));
 };

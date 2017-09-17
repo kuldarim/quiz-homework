@@ -12,11 +12,11 @@ class KatasList extends Component {
       <div>
         {
           this.props.katas && this.props.katas.map(
-            ({description, tests}, i) => {
-            if (!description)
+            (kata, i) => {
+            if (!kata)
               return <div>a</div>
             return (
-              <Kata key={i} id={i} description={description} tests={tests}/>
+              <Kata key={i} kata={{...kata, id: i}}/>
             )
           })
         }
