@@ -16,7 +16,7 @@ admin.initializeApp({
 });
 
 var db = admin.database();
-var ref = db.ref("server/saving-data/fireblog");
+var refResults = db.ref("results");
 var refKatas = db.ref("katas");
 
 // Priority serve any static files.
@@ -26,23 +26,16 @@ app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 app.get('/api', function (req, res) {
   res.set('Content-Type', 'application/json');
   refKatas.once("value", function(snapshot) {
-    console.log(snapshot.val());
     res.send(snapshot.val());
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
-  });
-  var usersRef = ref.child("users");
-  usersRef.set({
-    rimvydas_kulda: {
-      date_of_birth: "June 23, 1912",
-      full_name: "Alan Turing"
-    }
   });
 });
 
 app.post('/api/save', function (req, res) {
   console.log(req.body);
   res.set('Content-Type', 'application/json');
+  refResults.push(req.body);
   res.send(req.body)
 });
 
