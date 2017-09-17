@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
+import {Router, Route, browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import Home from './home';
 import { getAllKatas } from '../redux/reducers/reducer';

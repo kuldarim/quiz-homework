@@ -18,8 +18,8 @@ class User extends Component {
   render() {
     return (
       <InputGroup>
-      <InputGroupAddon>Enter user name: </InputGroupAddon>
-      <Input onChange={this.onChange}/>
+        <InputGroupAddon>Enter user name: </InputGroupAddon>
+        <Input onChange={this.onChange}/>
       </InputGroup>
     )
   }
