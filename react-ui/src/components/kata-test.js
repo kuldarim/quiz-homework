@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Table } from 'reactstrap';
 
 class KataTest extends Component {
   constructor(props) {
@@ -8,19 +9,27 @@ class KataTest extends Component {
   render() {
     
     return (
-      <div>
-        {
-          this.props.kata.tests && this.props.kata.tests.map(
-            (test, i) => {
-            return (
-              <div key={`${i}-test`}>
-                <span>{test.param}</span>
-                <span>{test.status ? 'true': 'false'}</span>
-              </div>
-            )
-          })
-        }
-      </div>
+      <Table>
+        <thead>
+          <tr>
+            <th>Input</th>
+            <th>Passed</th>
+          </tr>
+        </thead>
+        <tbody>
+            {
+            this.props.kata.tests && this.props.kata.tests.map(
+              (test, i) => {
+              return (
+                <tr key={`${i}-test`}>
+                  <td>{test.param}</td>
+                  <td>{test.status ? 'true': 'false'}</td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </Table>
     );
   }
 }

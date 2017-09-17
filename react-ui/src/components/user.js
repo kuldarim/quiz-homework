@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
 import { putUser } from '../redux/reducers/reducer'
 import './user.css';
@@ -16,10 +17,10 @@ class User extends Component {
 
   render() {
     return (
-      <div className="user-container">
-        <span>Enter user name: </span>
-        <input onChange={this.onChange}></input>
-      </div>
+      <InputGroup>
+      <InputGroupAddon>Enter user name: </InputGroupAddon>
+      <Input onChange={this.onChange}/>
+      </InputGroup>
     )
   }
 }

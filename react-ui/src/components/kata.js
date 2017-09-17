@@ -8,6 +8,7 @@ import 'brace/theme/monokai';
 import { putChangeTestStatus, putChangeSolution } from '../redux/reducers/reducer';
 
 import ReactMarkdown from 'react-remarkable';
+import { Button } from 'reactstrap';
 
 import isEqual from 'lodash/isEqual';
 import './kata.css';
@@ -77,7 +78,7 @@ class Kata extends Component {
             tabSize: 2,
           }}
         />
-        <button onClick={() => this.runTests()}>test</button>
+        <Button onClick={() => this.runTests()} color="primary">Run tests!</Button>
       </div>
     );
   }
