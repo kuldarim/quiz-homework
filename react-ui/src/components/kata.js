@@ -17,11 +17,27 @@ class Kata extends Component {
   runTests() {
     this.props.kata.tests.forEach(({param, result}, i) => {
       try {
-        // return params[0].filter(p => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(p) === -1)
-        const evaluatedResult = eval(`((...params) => {${this.props.kata.solution}})(${JSON.stringify(param)})`);
-        // const result = eval(`((...params) => {${newValue}})(["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"])`);
-        const status = isEqual(evaluatedResult, result);
-        this.props.putChangeTestStatus(this.props.kata.id, i, status);
+        const response = `
+        self.onmessage=function(){
+            postMessage(
+              eval(((...params) => {${this.props.kata.solution}})(${JSON.stringify(param)}))
+            )
+           self.close()
+      
+          }
+        `;
+
+        const runnable = new Blob([response], { type: "text/javascript" });
+        const worker = new Worker(window.URL.createObjectURL(runnable));
+
+        worker.onmessage = (e) => {
+          const evaluatedResult = e.data;
+          const status = isEqual(evaluatedResult, result);
+          this.props.putChangeTestStatus(this.props.kata.id, i, status);
+        };
+
+        worker.postMessage("WORK!!!");
+
       } catch (error) {
         console.log(error);
       }
@@ -31,27 +47,6 @@ class Kata extends Component {
   onChange(newValue) {
     this.props.putChangeSolution(this.props.kata.id, newValue)
   }
-  
-  //   // console.log('@props', this.props);
-  //   const response = `
-  //   self.onmessage=function(){
-  //       postMessage(
-  //           eval((${newValue})())
-  //       )
-  //      self.close()
-  
-  //     }
-  //   `; // Wrap workers onmessage lambda
-  
-  //   const runnable = new Blob([response], { type: "text/javascript" }); // Make a runnable JS blob
-  
-  //   const worker = new Worker(window.URL.createObjectURL(runnable)); // Bind the runnable blob to the a URL and create a worker
-  
-  //   worker.onmessage = (e) => {
-  //     console.log("Received: " + e.data); // Log the response from the worker
-  //   };
-  
-  //   worker.postMessage("WORK!!!"); // Start the worker.
   
   constructor(props) {
     super(props);

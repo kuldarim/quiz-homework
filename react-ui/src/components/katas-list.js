@@ -25,7 +25,7 @@ class KatasList extends Component {
           {
             this.props.katas && this.props.katas.map(
               (kata, i) => {
-                const submit = i === this.props.katas.length - 1 
+                const submit = i === 0
                 ? <Button onClick={() => this.props.putSubmit(this.props.katas, this.props.user)} color="primary">Submit</Button> 
                 : '';
                 return (
