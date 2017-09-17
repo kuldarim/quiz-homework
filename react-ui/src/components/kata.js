@@ -9,22 +9,10 @@ import { putChangeTestStatus, putChangeSolution } from '../redux/reducers/reduce
 
 import ReactMarkdown from 'react-remarkable';
 import { Button } from 'reactstrap';
-
-import { worker } from '../utils/worker';
+import RunTests from './run-tests';
 import './kata.css';
 
 class Kata extends Component {
-  runTests() {
-    // return params[0].filter(p => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(p) === -1)
-    this.props.kata.tests.forEach(({param, result}, i) => {
-        worker(
-          this.props.kata.solution,
-          param,
-          result,
-          (status) => this.props.putChangeTestStatus(this.props.kata.id, i, status)
-        )
-    });
-  }
   
   onChange(newValue) {
     this.props.putChangeSolution(this.props.kata.id, newValue)
@@ -56,7 +44,7 @@ class Kata extends Component {
               tabSize: 2,
             }}
           />
-          <Button onClick={() => this.runTests()} color="primary">Run tests!</Button>
+          <RunTests kata={this.props.kata}/>
         </div>
       </div>
     );
