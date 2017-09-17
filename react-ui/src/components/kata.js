@@ -7,6 +7,8 @@ import 'brace/theme/monokai';
 
 import { putChangeTestStatus, putChangeSolution } from '../redux/reducers/reducer';
 
+import ReactMarkdown from 'react-remarkable';
+
 import isEqual from 'lodash/isEqual';
 import './kata.css';
 
@@ -59,9 +61,11 @@ class Kata extends Component {
   }
   
   render() {
+    const source = `### Task\n${this.props.kata.task}\n### Example\n${this.props.kata.example}\n\n${this.props.kata.footer}
+    `;
     return (
       <div>
-        <div>{this.props.kata.description}</div>
+        <ReactMarkdown source={source} />
         <AceEditor
           mode="javascript"
           theme="monokai"
