@@ -1,4 +1,5 @@
 import axios from "axios";
+import { worker } from '../../utils/worker';
 /////////////////CONSTANTS/////////////////////
 
 const GET_ALL_KATAS = "GET_ALL_KATAS";
@@ -68,13 +69,25 @@ export const putUser = (user) => (dispatch) => {
 };
 
 export const putSubmit = (katas, user) => (dispatch) => {
-  axios.post(`/api/save`, {katas, user})
-  .then((response) => {
-    return response.data;
-  })
-  .then((task) => {
-  })
-  .catch((err) => {
-    console.error.bind(err);
-  })
+  let results = [];
+  katas.forEach(({solution, tests}, kataId) => {
+    (tests || []).forEach(({param, result}, testId) => {
+      worker(solution, param, result, (status) => {
+        putChangeTestStatus(kataId, testId, status);
+        results.push(status);
+        if (kataId === katas.length - 1 && testId === tests.length - 1) {
+          axios.post(`/api/save`, {user, results})
+            .then((response) => {
+              return response.data;
+            })
+            .then((task) => {
+            })
+            .catch((err) => {
+              console.error.bind(err);
+            })
+        }
+      });
+    })
+   }
+  )
 };

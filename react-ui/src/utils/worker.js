@@ -13,7 +13,6 @@ export const worker = (solution, param, result, callback) => {
         eval(((...params) => {${solution}})(${JSON.stringify(param)}))
       )
      self.close()
-  
     }
   `;
   
