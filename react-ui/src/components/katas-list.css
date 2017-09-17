@@ -1,0 +1,11 @@
+.slider-frame, .slider-list {
+  height: 600px !important;
+}
+
+.slider {
+  height: 800px !important;
+}
+
+.kata {
+  padding: 20px 80px;
+}

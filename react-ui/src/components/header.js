@@ -4,9 +4,13 @@ import './header.css';
 
 const Header = (props) => {
   return (
-    <header className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <header className="container">
+      <div className="header">
+        <img 
+          src={logo} 
+          className="logo" 
+          alt="logo" 
+        />
         <h2>Welcome to Quiz</h2>
       </div>
     </header>

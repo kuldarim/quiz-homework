@@ -8,6 +8,7 @@ import 'brace/theme/monokai';
 import { putChangeTestStatus, putChangeSolution } from '../redux/reducers/reducer';
 
 import isEqual from 'lodash/isEqual';
+import './kata.css';
 
 class Kata extends Component {
   runTests() {

@@ -12,8 +12,6 @@ class KataTest extends Component {
         {
           this.props.kata.tests && this.props.kata.tests.map(
             (test, i) => {
-            if (!test)
-              return <div>a</div>
             return (
               <div key={`${i}-test`}>
                 <span>{test.param}</span>
