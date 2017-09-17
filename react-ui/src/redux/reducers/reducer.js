@@ -66,3 +66,15 @@ export const putChangeSolution = (kataId, solution) => (dispatch) => {
 export const putUser = (user) => (dispatch) => {
   dispatch(changeUser(user));
 };
+
+export const putSubmit = (katas, user) => (dispatch) => {
+  axios.post(`/api/save`, {katas, user})
+  .then((response) => {
+    return response.data;
+  })
+  .then((task) => {
+  })
+  .catch((err) => {
+    console.error.bind(err);
+  })
+};

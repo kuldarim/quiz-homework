@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import Kata from './kata';
 import KataTest from './kata-test';
 import User from './user';
+import { Button } from 'reactstrap';
+import { putSubmit } from '../redux/reducers/reducer';
 import './katas-list.css';
 
 import Carousel from 'nuka-carousel';
@@ -23,12 +25,16 @@ class KatasList extends Component {
           {
             this.props.katas && this.props.katas.map(
               (kata, i) => {
-              return (
-                <div key={`${i}-kata`} className="kata" >
-                  <Kata kata={{...kata, id: i}}/>
-                  <KataTest kata={{...kata, id: i}}/>
-                </div>
-              )
+                const submit = i === this.props.katas.length - 1 
+                ? <Button onClick={() => this.props.putSubmit(this.props.katas, this.props.user)} color="primary">Submit</Button> 
+                : '';
+                return (
+                  <div key={`${i}-kata`} className="kata" >
+                    <Kata kata={{...kata, id: i}}/>
+                    <KataTest kata={{...kata, id: i}}/>
+                    {submit}
+                  </div>
+                )
             })
           }
         </Carousel>
@@ -39,5 +45,7 @@ class KatasList extends Component {
 
 };
 
-const mapState = ({katas}) => ({katas});
-export default connect(mapState)(KatasList);
+const mapState = ({katas, user}) => ({katas, user});
+const mapDispatch = {putSubmit};
+
+export default connect(mapState, mapDispatch)(KatasList);

@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
-var admin = require('firebase-admin');
+const bodyParser = require('body-parser');
+const admin = require('firebase-admin');
 
 const app = express();
+app.use(bodyParser.json()); // for parsing application/json
+
 const PORT = process.env.PORT || 5000;
 
 var serviceAccount = require("./key.json");
@@ -35,6 +38,12 @@ app.get('/api', function (req, res) {
       full_name: "Alan Turing"
     }
   });
+});
+
+app.post('/api/save', function (req, res) {
+  console.log(req.body);
+  res.set('Content-Type', 'application/json');
+  res.send(req.body)
 });
 
 // All remaining requests return the React app, so it can handle routing.
