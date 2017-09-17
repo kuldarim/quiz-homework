@@ -9,3 +9,13 @@
 .kata {
   padding: 20px 80px;
 }
+
+.kata-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kata-header > * {
+  padding-top: 15px;
+} 

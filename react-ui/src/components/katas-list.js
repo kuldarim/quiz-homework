@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Kata from './kata';
-import KataTest from './kata-test'
+import KataTest from './kata-test';
+import User from './user';
 import './katas-list.css';
 
 import Carousel from 'nuka-carousel';
@@ -14,7 +15,10 @@ class KatasList extends Component {
   render() {
     return (
       <div className="kata-container">
-        <div> You need to solve the excercizes bellow</div>
+        <div className="kata-header">
+          <User/>
+          <div> You need to solve the excercizes bellow</div>
+        </div>
         <Carousel>
           {
             this.props.katas && this.props.katas.map(

@@ -4,17 +4,20 @@ import axios from "axios";
 const GET_ALL_KATAS = "GET_ALL_KATAS";
 const CHANGE_STATUS = "CHANGE_STATUS";
 const CHANGE_SOLUTION = "CHANGE_SOLUTION";
+const CHANGE_USER = "CHANGE_USER";
 
 /////////////////ACTIONS//////////////
 
 const getKatas = (katas) => ({type: GET_ALL_KATAS, katas});
 const changeTestStatus = (kataId, testId, status) => ({type: CHANGE_STATUS, kataId, testId, status});
 const changeSolution = (kataId, solution) => ({type: CHANGE_SOLUTION, kataId, solution});
+const changeUser = (user) => ({type: CHANGE_USER, user});
 /////////////////REDUCER/////////////////////
 
 //initiate your starting state
 const initial = {
-  katas: []
+  katas: [],
+  user: ''
 };
 
 const reducer = (state = initial, action) => {
@@ -27,6 +30,8 @@ const reducer = (state = initial, action) => {
     case CHANGE_SOLUTION:
       state.katas[action.kataId].solution = action.solution;
       return { ...state, katas: [...state.katas] };
+    case CHANGE_USER:
+      return { ...state, user: `${action.user}`}
     default:
       return state;
   }
@@ -56,4 +61,8 @@ export const putChangeTestStatus = (kataId, testId, status) => (dispatch) => {
 
 export const putChangeSolution = (kataId, solution) => (dispatch) => {
   dispatch(changeSolution(kataId, solution));
+};
+
+export const putUser = (user) => (dispatch) => {
+  dispatch(changeUser(user));
 };
