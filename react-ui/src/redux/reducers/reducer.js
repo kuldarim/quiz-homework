@@ -73,7 +73,7 @@ export const putSubmit = (katas, user) => (dispatch) => {
   katas.forEach(({solution, tests}, kataId) => {
     (tests || []).forEach(({param, result}, testId) => {
       worker(solution, param, result, (status) => {
-        putChangeTestStatus(kataId, testId, status);
+        dispatch(changeTestStatus(kataId, testId, status));
         results.push(status);
         if (kataId === katas.length - 1 && testId === tests.length - 1) {
           axios.post(`/api/save`, {user, results})
