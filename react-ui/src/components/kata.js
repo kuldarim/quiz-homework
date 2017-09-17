@@ -67,18 +67,20 @@ class Kata extends Component {
     return (
       <div>
         <ReactMarkdown source={source} />
-        <AceEditor
-          mode="javascript"
-          theme="monokai"
-          name={`${this.props.kata.id}`}
-          onChange={this.onChange}
-          value={this.props.kata.solution}
-          setOptions={{
-            showLineNumbers: true,
-            tabSize: 2,
-          }}
-        />
-        <Button onClick={() => this.runTests()} color="primary">Run tests!</Button>
+        <div className="editor-container">
+          <AceEditor
+            mode="javascript"
+            theme="monokai"
+            name={`${this.props.kata.id}`}
+            onChange={this.onChange}
+            value={this.props.kata.solution}
+            setOptions={{
+              showLineNumbers: true,
+              tabSize: 2,
+            }}
+          />
+          <Button onClick={() => this.runTests()} color="primary">Run tests!</Button>
+        </div>
       </div>
     );
   }

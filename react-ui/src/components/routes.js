@@ -7,7 +7,7 @@ import { getAllKatas } from '../redux/reducers/reducer';
 const Routes = ({getAllKatas}) => {
   return (
     <Router history={browserHistory}>
-        <Route path="/" component={Home} onEnter={getAllKatas} />
+      <Route path="/" component={Home} onEnter={getAllKatas} />
     </Router>
   )
 };

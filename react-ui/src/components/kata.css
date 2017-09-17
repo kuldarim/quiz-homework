@@ -1,3 +1,13 @@
 .ace_editor {
   height: 200px !important;
 }
+
+.editor-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-primary {
+  height: 40px;
+  cursor: pointer;
+}
