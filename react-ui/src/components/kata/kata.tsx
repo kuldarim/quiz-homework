@@ -16,9 +16,15 @@ export const Kata: React.SFC<IKataProps> = (props) => {
   return (
     <div>
         <MarkDown kata={kata} />
-        <div className="editor-container">
-          <Editor kata={kata} />
-          <RunTests kata={kata} />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-8">
+              <Editor kata={kata} />
+            </div>
+            <div className="col-sm-2">
+              <RunTests kata={kata} />
+            </div>
+          </div>
         </div>
       </div>
   );

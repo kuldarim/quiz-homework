@@ -1,5 +1,5 @@
 .slider-frame, .slider-list {
-  height: 800px !important;
+  height: 100% !important;
 }
 
 .slider {
@@ -19,3 +19,9 @@
 .kata-header > * {
   padding-top: 15px;
 } 
+
+@media (max-width: 600px) { 
+  .slider {
+    height: 1300px !important;
+  }
+}
