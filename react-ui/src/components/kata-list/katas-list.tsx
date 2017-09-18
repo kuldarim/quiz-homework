@@ -23,7 +23,8 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
           <i className="container">
             You need to solve 4 Katas bellow, don't forget to enter user name before submitting.
             Each Kata has several test cases, feal free to run them any times you want, it doesn`t
-            impact your final result. If test fails it you will get it marked as false.
+            impact your final result. If test fails it you will get it marked as false. In case of
+            error in your code check console, you will see the error message output.
           </i>
         </div>
         <Alerts />
