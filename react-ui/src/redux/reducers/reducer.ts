@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { worker } from '../../utils/worker';
+import worker from '../../utils/worker';
 ///////////////// CONSTANTS /////////////////////
 
 const GET_ALL_KATAS = 'GET_ALL_KATAS';

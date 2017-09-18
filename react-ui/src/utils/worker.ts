@@ -1,4 +1,4 @@
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash';
 
 /*
 * @param solution function to evaluate
@@ -6,7 +6,12 @@ import isEqual from 'lodash/isEqual';
 * @param result expected result of evaluation
 * @param callback code to execute with tests results
 */
-export const worker = (solution, param, result, callback) => {
+const worker = (
+  solution: string,
+  param: any,
+  result: any,
+  callback: (...args: any[]) => any,
+) => {
   const response = `
   self.onmessage=function(){
       postMessage(
@@ -15,15 +20,17 @@ export const worker = (solution, param, result, callback) => {
      self.close()
     }
   `;
-  
-  const runnable = new Blob([response], { type: "text/javascript" });
-  const worker = new Worker(window.URL.createObjectURL(runnable));
 
-  worker.onmessage = (e) => {
+  const runnable = new Blob([response], { type: 'text/javascript' });
+  const w = new Worker(window.URL.createObjectURL(runnable));
+
+  w.onmessage = (e) => {
     const evaluatedResult = e.data;
     const status = isEqual(evaluatedResult, result);
     callback(status);
   };
 
-  worker.postMessage("WORK!!!");
+  w.postMessage('WORK!!!');
 };
+
+export default worker;

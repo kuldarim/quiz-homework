@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { putChangeTestStatus } from '../redux/reducers/reducer';
 const { Button } = require ('reactstrap');
-import { worker } from '../utils/worker';
+import worker from '../utils/worker';
 
 export interface ITest {
   param: string;

@@ -35,6 +35,8 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
         },
       };
     }
+
+    console.log('@state', state);
   };
 
   return (
