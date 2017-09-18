@@ -1,27 +1,28 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 const { Alert } = require('reactstrap');
 
 export interface IAlertsProps {
-  missing: any;
+  alerts: any;
 }
 
 export const Alerts: React.SFC<IAlertsProps> = (props) => {
-  const { missing } = props;
-  const user = missing.user
+  const { alerts } = props;
+  const user = alerts.user
   ? (
       <Alert color="danger">
         <strong>Opps!</strong> Forgot to enter userId.
       </Alert>
     )
   : null;
-  const kata = missing.katas
+  const kata = alerts.katas
     ? (
         <Alert color="danger">
           <strong>Opps!</strong> Forgot to solve one of the katas.
         </Alert>
       )
     : null;
-  const wellDone = missing.submit
+  const wellDone = alerts.submit
     ? (
         <Alert color="success">
           <strong>Well done!</strong> You successfully submitted your answers.
@@ -38,4 +39,6 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
   );
 };
 
-export default Alerts;
+const mapState = ({ alerts }: any) => ({ alerts });
+
+export default connect(mapState)(Alerts);

@@ -6,30 +6,33 @@ const GET_ALL_KATAS = 'GET_ALL_KATAS';
 const CHANGE_STATUS = 'CHANGE_STATUS';
 const CHANGE_SOLUTION = 'CHANGE_SOLUTION';
 const CHANGE_USER = 'CHANGE_USER';
+const SET_ALERTS = 'SET_ALERTS';
 
-export interface Kata {
+export interface IKata {
   id: number;
   solution: string;
-  tests: Array<any>;
+  tests: any[];
 }
 
 ///////////////// ACTIONS //////////////
 
-const getKatas = (katas: Kata) => ({type: GET_ALL_KATAS, katas});
+const getKatas = (katas: IKata) => ({type: GET_ALL_KATAS, katas});
 const changeTestStatus = (
-  kataId: number, 
-  testId: number, 
-  status: boolean
+  kataId: number,
+  testId: number,
+  status: boolean,
 ) => ({type: CHANGE_STATUS, kataId, testId, status});
 const changeSolution = (kataId: number, solution: string) => ({type: CHANGE_SOLUTION, kataId, solution});
 const changeUser = (user: string) => ({type: CHANGE_USER, user});
+const setAlerts = (alerts: object) => ({type: SET_ALERTS, alerts});
 
 ///////////////// REDUCER/////////////////////
 
 // initiate your starting state
 const initial = {
   katas: [],
-  user: ''
+  user: '',
+  alerts: {},
 };
 
 const reducer = (state = initial, action: any) => {
@@ -37,13 +40,15 @@ const reducer = (state = initial, action: any) => {
     case GET_ALL_KATAS:
       return {...state, katas: action.katas };
     case CHANGE_STATUS:
-      (state.katas[action.kataId] as Kata).tests[action.testId].status = action.status;
+      (state.katas[action.kataId] as IKata).tests[action.testId].status = action.status;
       return { ...state, katas: [...state.katas] };
     case CHANGE_SOLUTION:
-      (state.katas[action.kataId] as Kata).solution = action.solution;
+      (state.katas[action.kataId] as IKata).solution = action.solution;
       return { ...state, katas: [...state.katas] };
     case CHANGE_USER:
       return { ...state, user: `${action.user}`};
+    case SET_ALERTS:
+    return { ...state, alerts: {...action.alerts}};
     default:
       return state;
   }
@@ -78,8 +83,13 @@ export const putUser = (user: string) => (dispatch: any) => {
   dispatch(changeUser(user));
 };
 
-export const putSubmit = (katas: Array<Kata>, user: string) => (dispatch: any) => {
-  let results: Array<boolean> = [];
+export const putAlerts = (alerts: object) => (dispatch: any) => {
+  dispatch(setAlerts(alerts));
+};
+
+export const putSubmit = (katas: IKata[], user: string) => (dispatch: any) => {
+  console.log('@called');
+  const results: boolean[] = [];
   katas.forEach(({solution, tests}, kataId) => {
     (tests || []).forEach(({param, result}, testId) => {
       worker(solution, param, result, (status: boolean) => {
@@ -96,6 +106,5 @@ export const putSubmit = (katas: Array<Kata>, user: string) => (dispatch: any) =
         }
       });
     });
-   }
-  );
+  });
 };

@@ -1,42 +1,31 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 const { Button } = require('reactstrap');
-import { putSubmit } from '../redux/reducers/reducer';
+import { putSubmit, putAlerts } from '../redux/reducers/reducer';
 import Alerts from './alerts';
 
 export interface ISubmitProps {
   index: number,
   katas: any[],
   user: string,
-  putSubmit: (katas: any[], user: string) => any
+  putSubmit: (katas: any[], user: string) => any,
+  putAlerts: (alerts: object) => any,
 }
 
-type State = {
-  missing: object,
-};
-
 export const Submit: React.SFC<ISubmitProps> = (props) => {
-  const { index, user, katas, putSubmit } = props;
-
-  let state: State = {
-    missing: {},
-  };
+  const { index, user, katas, putSubmit, putAlerts } = props;
 
   const submit = () => {
     const withoutSolution = katas.filter(({solution}) => !solution);
     if (user && !withoutSolution.length) {
-      state = {missing: {submit: true}};
+      putAlerts({submit: true});
       putSubmit(katas, user);
     } else {
-      state = {
-        missing: {
-          user: !user,
-          katas: !!withoutSolution.length,
-        },
-      };
+      putAlerts({
+        user: !user,
+        katas: !!withoutSolution.length,
+      });
     }
-
-    console.log('@state', state);
   };
 
   return (
@@ -49,7 +38,7 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
           >
             Submit
           </Button>
-          <Alerts missing={state.missing}/>
+          <Alerts />
         </div>
       )
       : null
@@ -57,6 +46,6 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
 };
 
 const mapState = ({ katas, user }: any) => ({ katas, user });
-const mapDispatch = { putSubmit };
+const mapDispatch = { putSubmit, putAlerts };
 
 export default connect(mapState, mapDispatch)(Submit);
