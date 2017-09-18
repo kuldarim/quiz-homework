@@ -20,7 +20,11 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
     <div className="kata-container">
         <div className="kata-header">
           <User/>
-          <div> You need to solve the excercizes bellow</div>
+          <i className="container">
+            You need to solve 4 Katas bellow, don't forget to enter user name before submitting.
+            Each Kata has several test cases, feal free to run them any times you want, it doesn`t
+            impact your final result. If test fails it you will get it marked as false.
+          </i>
         </div>
         <Alerts />
         <Carousel>
