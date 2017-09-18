@@ -28,7 +28,7 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
           </i>
         </div>
         <Alerts />
-        <Carousel>
+        <Carousel slideWidth={1} initialSlideHeight={800} margin={'auto'} dragging={false} swiping={false}>
           {
             katas && katas.map(
               (kata, i) => {
