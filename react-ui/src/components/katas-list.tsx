@@ -1,28 +1,28 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import Kata from './kata';
 import KataTest from './kata-test';
 import User from './user';
 import './katas-list.css';
 import Submit from './submit';
+const Carousel = require('nuka-carousel');
 
-import Carousel from 'nuka-carousel';
+export interface IKatasListProps {
+  katas: any[],
+}
 
-class KatasList extends Component {
-  constructor(props) {
-    super(props)
-  }
+export const KatasList: React.SFC<IKatasListProps> = (props) => {
+  const { katas } = props;
 
-  render() {
-    return (
-      <div className="kata-container">
+  return (
+    <div className="kata-container">
         <div className="kata-header">
           <User/>
           <div> You need to solve the excercizes bellow</div>
         </div>
         <Carousel>
           {
-            this.props.katas && this.props.katas.map(
+            katas && katas.map(
               (kata, i) => {
                 return (
                   <div key={`${i}-kata`} className="kata" >
@@ -30,17 +30,14 @@ class KatasList extends Component {
                     <KataTest kata={{...kata, id: i}}/>
                     <Submit index={i}/>
                   </div>
-                )
+                );
             })
           }
         </Carousel>
-        
       </div>
-    );
-  }
-
+  );
 };
 
-const mapState = ({katas, user}) => ({katas, user});
+const mapState = ({katas}: any) => ({katas});
 
 export default connect(mapState)(KatasList);
