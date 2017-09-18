@@ -67,7 +67,7 @@ export const getAllKatas = () => (dispatch: any) => {
       dispatch(getKatas(katas));
     })
     .catch((err) => {
-      console.error.bind(err);
+      console.error(err);
     });
 };
 
@@ -88,11 +88,11 @@ export const putAlerts = (alerts: object) => (dispatch: any) => {
 };
 
 export const putSubmit = (katas: IKata[], user: string) => (dispatch: any) => {
-  console.log('@called');
   const results: boolean[] = [];
   katas.forEach(({solution, tests}, kataId) => {
     (tests || []).forEach(({param, result}, testId) => {
-      worker(solution, param, result, putAlerts, (status: boolean) => {
+
+      const callback = (status: boolean) => {
         dispatch(changeTestStatus(kataId, testId, status));
         results.push(status);
         if (kataId === katas.length - 1 && testId === tests.length - 1) {
@@ -102,10 +102,12 @@ export const putSubmit = (katas: IKata[], user: string) => (dispatch: any) => {
               return response.data;
             })
             .catch((err) => {
-              console.error.bind(err);
+              console.error(err);
             });
         }
-      });
+      };
+
+      worker({solution, param, result, putAlerts: putAlerts, callback});
     });
   });
 };

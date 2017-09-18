@@ -19,13 +19,13 @@ export const RunTests: React.SFC<IRunTestsProps> = (props) => {
   const { kata, putAlerts, putChangeTestStatus } = props;
 
   const runTests = () => { (kata.tests as ITest[]).forEach(({param, result}, i: number) =>
-    worker(
-      kata.solution,
+    worker({
+      solution: kata.solution,
       param,
       result,
       putAlerts,
-      (status: boolean) => putChangeTestStatus(kata.id, i, status),
-    ));
+      callback: (status: boolean) => putChangeTestStatus(kata.id, i, status),
+    }));
   };
 
   return (

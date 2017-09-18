@@ -1,18 +1,29 @@
 import { isEqual } from 'lodash';
 
+export interface IWorkerProps {
+  solution: string,
+  param: any,
+  result: any,
+  putAlerts: (...args: any[]) => any,
+  callback: (...args: any[]) => any,
+}
+
 /*
 * @param solution function to evaluate
 * @param param params to pass for function to test
 * @param result expected result of evaluation
 * @param callback code to execute with tests results
 */
-const worker = (
-  solution: string,
-  param: any,
-  result: any,
-  putAlerts: (...args: any[]) => any,
-  callback: (...args: any[]) => any,
-) => {
+const worker = (params: IWorkerProps) => {
+
+  const {
+    solution,
+    param,
+    result,
+    putAlerts,
+    callback,
+  } = params;
+
   const response = `
   self.onmessage=function(){
       postMessage(

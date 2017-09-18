@@ -7,16 +7,17 @@ export interface ISubmitProps {
   index: number,
   katas: any[],
   user: string,
+  alerts: any,
   putSubmit: (katas: any[], user: string) => any,
   putAlerts: (alerts: object) => any,
 }
 
 export const Submit: React.SFC<ISubmitProps> = (props) => {
-  const { index, user, katas, putSubmit, putAlerts } = props;
+  const { index, user, katas, putSubmit, putAlerts, alerts } = props;
 
   const submit = () => {
     const withoutSolution = katas.filter(({solution}) => !solution);
-    if (user && !withoutSolution.length) {
+    if (user && !withoutSolution.length && !alerts.tests) {
       putSubmit(katas, user);
     } else {
       putAlerts({
@@ -42,7 +43,7 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
   );
 };
 
-const mapState = ({ katas, user }: any) => ({ katas, user });
+const mapState = ({ katas, user, alerts }: any) => ({ katas, user, alerts });
 const mapDispatch = { putSubmit, putAlerts };
 
 export default connect(mapState, mapDispatch)(Submit);
