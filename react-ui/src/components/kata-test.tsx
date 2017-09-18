@@ -37,7 +37,7 @@ class KataTest extends React.Component<IProp> {
                 (test: ITest, i: number) => {
                 return (
                   <tr key={`${i}-test`}>
-                    <td>{test.param}</td>
+                    <td>{test.param.toString()}</td>
                     <td>{test.status ? 'true' : 'false'}</td>
                   </tr>
                 );
