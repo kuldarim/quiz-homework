@@ -96,6 +96,7 @@ export const putSubmit = (katas: IKata[], user: string) => (dispatch: any) => {
         dispatch(changeTestStatus(kataId, testId, status));
         results.push(status);
         if (kataId === katas.length - 1 && testId === tests.length - 1) {
+          dispatch(setAlerts({submit: results}));
           axios.post(`/api/save`, {user, results})
             .then((response) => {
               return response.data;

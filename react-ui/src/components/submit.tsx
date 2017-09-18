@@ -17,7 +17,6 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
   const submit = () => {
     const withoutSolution = katas.filter(({solution}) => !solution);
     if (user && !withoutSolution.length) {
-      putAlerts({submit: true});
       putSubmit(katas, user);
     } else {
       putAlerts({

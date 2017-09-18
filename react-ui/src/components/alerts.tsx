@@ -29,10 +29,12 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
         </Alert>
       )
     : null;
-  const wellDone = alerts.submit
+
+  const wellDone = (alerts.submit || []).length
     ? (
         <Alert color="success">
           <strong>Well done!</strong> You successfully submitted your answers.
+          Tests passed: {alerts.submit.filter(Boolean).length} of {alerts.submit.length}
         </Alert>
       )
     : null;
