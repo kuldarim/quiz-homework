@@ -1,3 +1,4 @@
+import { IKata } from '../redux/reducers/reducer';
 import * as React from 'react';
 
 import MarkDown from './markdown';
@@ -6,7 +7,7 @@ import Editor from './editor';
 import './kata.css';
 
 export interface IKataProps {
-  kata: any
+  kata: IKata
 }
 
 export const Kata: React.SFC<IKataProps> = (props) => {

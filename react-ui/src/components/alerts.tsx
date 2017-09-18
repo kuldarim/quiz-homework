@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { IAlert, IState } from '../redux/reducers/reducer';
 const { Alert } = require('reactstrap');
 
 export interface IAlertsProps {
-  alerts: any;
+  alerts: IAlert;
 }
 
 export const Alerts: React.SFC<IAlertsProps> = (props) => {
@@ -34,7 +35,7 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
     ? (
         <Alert color="success">
           <strong>Well done!</strong> You successfully submitted your answers.
-          Tests passed: {alerts.submit.filter(Boolean).length} of {alerts.submit.length}
+          Tests passed: {(alerts.submit || []).filter(Boolean).length} of {(alerts.submit || []).length}
         </Alert>
       )
     : null;
@@ -48,6 +49,6 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
   );
 };
 
-const mapState = ({ alerts }: any) => ({ alerts });
+const mapState = ({ alerts }: IState) => ({ alerts });
 
 export default connect(mapState)(Alerts);

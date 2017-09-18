@@ -1,3 +1,4 @@
+import { IKata, IState } from '../redux/reducers/reducer';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Kata from './kata';
@@ -9,7 +10,7 @@ const Carousel = require('nuka-carousel');
 import Alerts from './alerts';
 
 export interface IKatasListProps {
-  katas: any[],
+  katas: IKata[],
 }
 
 export const KatasList: React.SFC<IKatasListProps> = (props) => {
@@ -40,6 +41,6 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
   );
 };
 
-const mapState = ({katas}: any) => ({katas});
+const mapState = ({katas}: IState) => ({katas});
 
 export default connect(mapState)(KatasList);

@@ -5,11 +5,11 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
-import { putChangeSolution } from '../redux/reducers/reducer';
+import { putChangeSolution, IKata } from '../redux/reducers/reducer';
 
 export interface IEditorProps {
-  kata: any;
-  putChangeSolution: (n: number, s: string) => any;
+  kata: IKata;
+  putChangeSolution: typeof putChangeSolution;
 }
 
 export const Editor: React.SFC<IEditorProps> = (props) => {

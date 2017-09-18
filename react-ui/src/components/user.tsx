@@ -6,7 +6,7 @@ import { putUser } from '../redux/reducers/reducer';
 import './user.css';
 
 export interface IUserProps {
-  putUser: (s: string) => any
+  putUser: typeof putUser
 }
 
 export const User: React.SFC<IUserProps> = (props) => {

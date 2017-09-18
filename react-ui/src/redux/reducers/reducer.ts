@@ -8,15 +8,38 @@ const CHANGE_SOLUTION = 'CHANGE_SOLUTION';
 const CHANGE_USER = 'CHANGE_USER';
 const SET_ALERTS = 'SET_ALERTS';
 
+export interface IState {
+  katas: IKata[],
+  user: string,
+  alerts: IAlert
+}
+
+export interface ITest {
+  param: string;
+  status: boolean;
+  result: any;
+}
+
 export interface IKata {
   id: number;
   solution: string;
-  tests: any[];
+  tests: ITest[];
+  description: string;
+  example: string;
+  footer: string;
+  task: string;
+}
+
+export interface IAlert {
+  user?: boolean,
+  katas?: boolean,
+  tests?: boolean,
+  submit?: boolean[]
 }
 
 ///////////////// ACTIONS //////////////
 
-const getKatas = (katas: IKata) => ({type: GET_ALL_KATAS, katas});
+const getKatas = (katas: IKata[]) => ({type: GET_ALL_KATAS, katas});
 const changeTestStatus = (
   kataId: number,
   testId: number,
@@ -24,7 +47,7 @@ const changeTestStatus = (
 ) => ({type: CHANGE_STATUS, kataId, testId, status});
 const changeSolution = (kataId: number, solution: string) => ({type: CHANGE_SOLUTION, kataId, solution});
 const changeUser = (user: string) => ({type: CHANGE_USER, user});
-const setAlerts = (alerts: object) => ({type: SET_ALERTS, alerts});
+const setAlerts = (alerts: IAlert) => ({type: SET_ALERTS, alerts});
 
 ///////////////// REDUCER/////////////////////
 
@@ -83,7 +106,7 @@ export const putUser = (user: string) => (dispatch: any) => {
   dispatch(changeUser(user));
 };
 
-export const putAlerts = (alerts: object) => (dispatch: any) => {
+export const putAlerts = (alerts: IAlert) => (dispatch: any) => {
   dispatch(setAlerts(alerts));
 };
 

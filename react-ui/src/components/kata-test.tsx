@@ -1,14 +1,6 @@
 import * as React from 'react';
+import { IKata } from '../redux/reducers/reducer';
 const { Table } = require('reactstrap');
-
-interface ITest {
-  param: string;
-  status: boolean;
-}
-
-interface IKata {
-  tests: ITest[];
-}
 
 interface IProp {
   kata: IKata;
@@ -33,8 +25,8 @@ class KataTest extends React.Component<IProp> {
           </thead>
           <tbody>
               {
-                (this.props as IProp).kata.tests && (this.props as IProp).kata.tests.map(
-                (test: ITest, i: number) => {
+                this.props.kata.tests && this.props.kata.tests.map(
+                (test, i: number) => {
                 return (
                   <tr key={`${i}-test`}>
                     <td>{test.param.toString()}</td>
