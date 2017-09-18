@@ -1,9 +1,9 @@
-import { IKata } from '../redux/reducers/reducer';
+import { IKata } from '../../redux/reducers/reducer';
 import * as React from 'react';
 
-import MarkDown from './markdown';
-import RunTests from './run-tests';
-import Editor from './editor';
+import MarkDown from './components/markdown';
+import RunTests from './components/run-tests';
+import Editor from './components/editor';
 import './kata.css';
 
 export interface IKataProps {

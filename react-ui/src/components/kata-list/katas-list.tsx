@@ -1,13 +1,13 @@
-import { IKata, IState } from '../redux/reducers/reducer';
+import { IKata, IState } from '../../redux/reducers/reducer';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Kata from './kata';
-import KataTest from './kata-test';
-import User from './user';
+import Kata from '../kata/kata';
+import KataTest from '../kata/kata-test';
 import './katas-list.css';
-import Submit from './submit';
 const Carousel = require('nuka-carousel');
-import Alerts from './alerts';
+import User from './components/user';
+import Alerts from './components/alerts';
+import Submit from './components/submit';
 
 export interface IKatasListProps {
   katas: IKata[],

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IKata } from '../redux/reducers/reducer';
+import { IKata } from '../../../redux/reducers/reducer';
 const ReactMarkdown = require('react-remarkable');
 
 interface IMarkDownProp {

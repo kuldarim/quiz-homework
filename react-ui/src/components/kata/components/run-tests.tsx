@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IKata, putAlerts, putChangeTestStatus } from '../redux/reducers/reducer';
+import { IKata, putAlerts, putChangeTestStatus } from '../../../redux/reducers/reducer';
 const { Button } = require ('reactstrap');
-import worker from '../utils/worker';
+import worker from '../../../utils/worker';
 
 export interface IRunTestsProps {
   kata: IKata;

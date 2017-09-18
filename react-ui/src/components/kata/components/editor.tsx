@@ -5,7 +5,7 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
-import { putChangeSolution, IKata } from '../redux/reducers/reducer';
+import { putChangeSolution, IKata } from '../../../redux/reducers/reducer';
 
 export interface IEditorProps {
   kata: IKata;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 const { InputGroup, InputGroupAddon, Input } = require('reactstrap');
 
-import { putUser } from '../redux/reducers/reducer';
+import { putUser } from '../../../redux/reducers/reducer';
 import './user.css';
 
 export interface IUserProps {
