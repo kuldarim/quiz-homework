@@ -2,7 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 const { Button } = require('reactstrap');
 import { putSubmit, putAlerts } from '../redux/reducers/reducer';
-import Alerts from './alerts';
 
 export interface ISubmitProps {
   index: number,
@@ -38,7 +37,6 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
           >
             Submit
           </Button>
-          <Alerts />
         </div>
       )
       : null

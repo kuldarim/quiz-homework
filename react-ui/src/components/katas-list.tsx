@@ -6,6 +6,7 @@ import User from './user';
 import './katas-list.css';
 import Submit from './submit';
 const Carousel = require('nuka-carousel');
+import Alerts from './alerts';
 
 export interface IKatasListProps {
   katas: any[],
@@ -20,6 +21,7 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
           <User/>
           <div> You need to solve the excercizes bellow</div>
         </div>
+        <Alerts />
         <Carousel>
           {
             katas && katas.map(

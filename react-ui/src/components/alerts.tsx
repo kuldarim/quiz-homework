@@ -22,6 +22,13 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
         </Alert>
       )
     : null;
+  const tests = alerts.tests
+    ? (
+        <Alert color="danger">
+          <strong>Opps!</strong> Something is wrong with your solution, check console.
+        </Alert>
+      )
+    : null;
   const wellDone = alerts.submit
     ? (
         <Alert color="success">
@@ -30,11 +37,11 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
       )
     : null;
   return (
-
     <div>
       {user}
       {kata}
       {wellDone}
+      {tests}
     </div>
   );
 };

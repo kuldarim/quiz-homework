@@ -10,6 +10,7 @@ const worker = (
   solution: string,
   param: any,
   result: any,
+  putAlerts: (...args: any[]) => any,
   callback: (...args: any[]) => any,
 ) => {
   const response = `
@@ -27,7 +28,14 @@ const worker = (
   w.onmessage = (e) => {
     const evaluatedResult = e.data;
     const status = isEqual(evaluatedResult, result);
+    putAlerts({});
     callback(status);
+  };
+
+  w.onerror = (e) => {
+    e.preventDefault(); // <-- "Hey browser, I handled it!"
+    putAlerts({tests: true});
+    console.warn(e.message);
   };
 
   w.postMessage('WORK!!!');

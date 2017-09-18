@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { putChangeTestStatus } from '../redux/reducers/reducer';
+import { putAlerts, putChangeTestStatus } from '../redux/reducers/reducer';
 const { Button } = require ('reactstrap');
 import worker from '../utils/worker';
 
@@ -12,16 +12,18 @@ export interface ITest {
 export interface IRunTestsProps {
   kata: any;
   putChangeTestStatus: (id: number, i: number, status: boolean) => any;
+  putAlerts: (...args: any[]) => any;
 }
 
 export const RunTests: React.SFC<IRunTestsProps> = (props) => {
-  const { kata, putChangeTestStatus } = props;
+  const { kata, putAlerts, putChangeTestStatus } = props;
 
   const runTests = () => { (kata.tests as ITest[]).forEach(({param, result}, i: number) =>
     worker(
       kata.solution,
       param,
       result,
+      putAlerts,
       (status: boolean) => putChangeTestStatus(kata.id, i, status),
     ));
   };
@@ -31,5 +33,5 @@ export const RunTests: React.SFC<IRunTestsProps> = (props) => {
   );
 };
 
-const mapDispatch = {putChangeTestStatus};
+const mapDispatch = {putChangeTestStatus, putAlerts};
 export default connect(null, mapDispatch)(RunTests);

@@ -92,7 +92,7 @@ export const putSubmit = (katas: IKata[], user: string) => (dispatch: any) => {
   const results: boolean[] = [];
   katas.forEach(({solution, tests}, kataId) => {
     (tests || []).forEach(({param, result}, testId) => {
-      worker(solution, param, result, (status: boolean) => {
+      worker(solution, param, result, putAlerts, (status: boolean) => {
         dispatch(changeTestStatus(kataId, testId, status));
         results.push(status);
         if (kataId === katas.length - 1 && testId === tests.length - 1) {
