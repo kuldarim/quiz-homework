@@ -30,7 +30,7 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
   return (
     index === katas.length - 1
       ? (
-        <div>
+        <div className="container">
           <Button
             onClick={submit}
             color="primary"

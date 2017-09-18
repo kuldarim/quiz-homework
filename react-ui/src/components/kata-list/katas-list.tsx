@@ -17,7 +17,7 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
   const { katas } = props;
 
   return (
-    <div className="kata-container">
+    <div>
         <div className="kata-header">
           <User/>
           <i className="container">
@@ -30,15 +30,14 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
         <Alerts />
         <Carousel slideWidth={1} initialSlideHeight={800} margin={'auto'} dragging={false} swiping={false}>
           {
-            katas && katas.map(
-              (kata, i) => {
-                return (
-                  <div key={`${i}-kata`} className="kata" >
-                    <Kata kata={{...kata, id: i}}/>
-                    <KataTest kata={{...kata, id: i}}/>
-                    <Submit index={i}/>
-                  </div>
-                );
+            katas && katas.map((kata, i) => {
+              return (
+                <div key={`${i}-kata`}>
+                  <Kata kata={{...kata, id: i}}/>
+                  <KataTest kata={{...kata, id: i}}/>
+                  <Submit index={i}/>
+                </div>
+              );
             })
           }
         </Carousel>
