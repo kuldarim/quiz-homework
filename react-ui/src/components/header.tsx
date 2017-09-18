@@ -2,7 +2,7 @@ import * as React from 'react';
 const logo = require('../logo.svg');
 import './header.css';
 
-const Header = (props: any) => {
+const Header = () => {
   return (
     <header className="container">
       <div className="header">
