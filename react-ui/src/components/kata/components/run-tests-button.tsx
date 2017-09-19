@@ -18,11 +18,11 @@ export const RunTestsButton: React.SFC<IRunTestsButtonProps> = (props) => {
       putAlerts({katas: true});
     } else {
       worker({solution: kata.solution, param, result, kataId: kata.id, testId})
-      .then(({kataId, testId, status}) => {
-        putChangeTestStatus(kataId, testId, status);
-        putAlerts({});
-      })
-      .catch(() => putAlerts({tests: true}));
+        .then(({kataId, testId, status}) => {
+          putChangeTestStatus(kataId, testId, status);
+          putAlerts({});
+        })
+        .catch(() => putAlerts({tests: true}));
     }
   });
 
