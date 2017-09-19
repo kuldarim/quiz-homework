@@ -26,7 +26,7 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
   const tests = alerts.tests
     ? (
         <Alert color="danger">
-          <strong>Opps!</strong> Something is wrong with your solution, check console.
+          <strong>Opps!</strong> Something is wrong with one of your solutions, check console.
         </Alert>
       )
     : null;

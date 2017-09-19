@@ -83,15 +83,9 @@ export default reducer;
 
 export const getAllKatas = () => (dispatch: any) => {
   axios.get(`/api`)
-    .then((response) => {
-      return response.data;
-    })
-    .then((katas) => {
-      dispatch(getKatas(katas));
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+    .then((response) => response.data)
+    .then((katas) => dispatch(getKatas(katas)))
+    .catch(console.error);
 };
 
 export const putChangeTestStatus = (kataId: number, testId: number, status: boolean) => (dispatch: any) => {
@@ -111,26 +105,24 @@ export const putAlerts = (alerts: IAlert) => (dispatch: any) => {
 };
 
 export const putSubmit = (katas: IKata[], user: string) => (dispatch: any) => {
-  const results: boolean[] = [];
-  katas.forEach(({solution, tests}, kataId) => {
+  const promises: Array<Promise<any>> = [];
+  katas.forEach(({solution, tests}, kataId) =>
     (tests || []).forEach(({param, result}, testId) => {
+      const w = worker({solution, param, result, kataId, testId});
+      promises.push(w);
+  }));
 
-      const callback = (status: boolean) => {
-        dispatch(changeTestStatus(kataId, testId, status));
+  Promise.all(promises)
+    .then((data) => {
+      const results: boolean[] = [];
+      data.forEach(({kataId, testId, status}) => {
         results.push(status);
-        if (kataId === katas.length - 1 && testId === tests.length - 1) {
-          dispatch(setAlerts({submit: results}));
-          axios.post(`/api/save`, {user, results})
-            .then((response) => {
-              return response.data;
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        }
-      };
-
-      worker({solution, param, result, putAlerts: putAlerts, callback});
-    });
-  });
+        dispatch(changeTestStatus(kataId, testId, status));
+      });
+      dispatch(setAlerts({submit: results}));
+      axios
+        .post(`/api/save`, {user, results})
+        .catch(console.error);
+    })
+    .catch((data) => dispatch(setAlerts({tests: true})));
 };
