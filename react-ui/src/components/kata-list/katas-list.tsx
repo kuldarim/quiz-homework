@@ -2,12 +2,12 @@ import { IKata, IState } from '../../redux/reducers/reducer';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Kata from '../kata/kata';
-import KataTest from '../kata/kata-test';
-import './katas-list.css';
-const Carousel = require('nuka-carousel');
-import User from './components/user';
+import KataTestsResultsDisplayer from '../kata/kata-tests-results-displayer';
+import UserNameInput from './components/user-name-input';
+import SubmitButton from './components/submit-button';
 import Alerts from './components/alerts';
-import Submit from './components/submit';
+const Carousel = require('nuka-carousel');
+import './katas-list.css';
 
 export interface IKatasListProps {
   katas: IKata[],
@@ -19,7 +19,7 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
   return (
     <div>
         <div className="kata-header">
-          <User/>
+          <UserNameInput/>
           <i className="container">
             You need to solve 4 Katas bellow, don't forget to enter user name before submitting.
             Each Kata has several test cases, feal free to run them any times you want, it doesn`t
@@ -34,8 +34,8 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
               return (
                 <div key={`${i}-kata`}>
                   <Kata kata={{...kata, id: i}}/>
-                  <KataTest kata={{...kata, id: i}}/>
-                  <Submit index={i}/>
+                  <KataTestsResultsDisplayer kata={{...kata, id: i}}/>
+                  <SubmitButton index={i}/>
                 </div>
               );
             })

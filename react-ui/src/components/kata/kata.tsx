@@ -2,8 +2,8 @@ import { IKata } from '../../redux/reducers/reducer';
 import * as React from 'react';
 
 import MarkDown from './components/markdown';
-import RunTests from './components/run-tests';
-import Editor from './components/editor';
+import RunTestsButton from './components/run-tests-button';
+import CodeEditor from './components/code-editor';
 import './kata.css';
 
 export interface IKataProps {
@@ -22,10 +22,10 @@ export const Kata: React.SFC<IKataProps> = (props) => {
       </div>
       <div className="row">
         <div className="col-sm-10">
-          <Editor kata={kata} />
+          <CodeEditor kata={kata} />
         </div>
         <div className="col-sm-2">
-          <RunTests kata={kata} />
+          <RunTestsButton kata={kata} />
         </div>
       </div>
     </div>

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { IKata } from '../../redux/reducers/reducer';
 const { Table } = require('reactstrap');
-import './kata-test.css';
+import './kata-tests-results-displayer.css';
 
 interface IProp {
   kata: IKata;
 }
 
-class KataTest extends React.Component<IProp> {
+class KataTestResultsDisplayer extends React.Component<IProp> {
   constructor(props: IProp) {
     super(props);
   }
@@ -47,4 +47,4 @@ class KataTest extends React.Component<IProp> {
   }
 }
 
-export default KataTest;
+export default KataTestResultsDisplayer;

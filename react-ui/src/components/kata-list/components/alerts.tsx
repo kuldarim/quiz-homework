@@ -12,7 +12,7 @@ export const Alerts: React.SFC<IAlertsProps> = (props) => {
   const user = alerts.user
   ? (
       <Alert color="danger">
-        <strong>Opps!</strong> Forgot to enter userId.
+        <strong>Opps!</strong> Forgot to enter user name.
       </Alert>
     )
   : null;

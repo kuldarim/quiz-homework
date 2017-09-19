@@ -4,13 +4,13 @@ import { IKata, putAlerts, putChangeTestStatus } from '../../../redux/reducers/r
 const { Button } = require ('reactstrap');
 import worker from '../../../utils/worker';
 
-export interface IRunTestsProps {
+export interface IRunTestsButtonProps {
   kata: IKata;
   putChangeTestStatus: typeof putChangeTestStatus;
   putAlerts: typeof putAlerts;
 }
 
-export const RunTests: React.SFC<IRunTestsProps> = (props) => {
+export const RunTestsButton: React.SFC<IRunTestsButtonProps> = (props) => {
   const { kata, putAlerts, putChangeTestStatus } = props;
 
   const runTests = () => kata.tests.forEach(({param, result}, testId: number) =>
@@ -28,4 +28,4 @@ export const RunTests: React.SFC<IRunTestsProps> = (props) => {
 };
 
 const mapDispatch = {putChangeTestStatus, putAlerts};
-export default connect(null, mapDispatch)(RunTests);
+export default connect(null, mapDispatch)(RunTestsButton);

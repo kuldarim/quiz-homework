@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 const { InputGroup, InputGroupAddon, Input } = require('reactstrap');
 
 import { putUser } from '../../../redux/reducers/reducer';
-import './user.css';
+import './user-name-input.css';
 
-export interface IUserProps {
+export interface IUserNameInputProps {
   putUser: typeof putUser
 }
 
-export const User: React.SFC<IUserProps> = (props) => {
+export const UserNameInput: React.SFC<IUserNameInputProps> = (props) => {
   const { putUser } = props;
 
   const handleIncrement = (event: any) => { putUser(event.target.value); };
@@ -23,4 +23,4 @@ export const User: React.SFC<IUserProps> = (props) => {
 };
 
 const mapDispatch = { putUser };
-export default connect(null, mapDispatch)(User);
+export default connect(null, mapDispatch)(UserNameInput);

@@ -7,12 +7,12 @@ import 'brace/theme/monokai';
 
 import { putChangeSolution, IKata } from '../../../redux/reducers/reducer';
 
-export interface IEditorProps {
+export interface ICodeEditorProps {
   kata: IKata;
   putChangeSolution: typeof putChangeSolution;
 }
 
-export const Editor: React.SFC<IEditorProps> = (props) => {
+export const CodeEditor: React.SFC<ICodeEditorProps> = (props) => {
   const { kata, putChangeSolution } = props;
 
   const handleIncrement = (newValue: string) => { putChangeSolution(kata.id, newValue); };
@@ -33,4 +33,4 @@ export const Editor: React.SFC<IEditorProps> = (props) => {
 };
 
 const mapDispatch = { putChangeSolution };
-export default connect(null, mapDispatch)(Editor);
+export default connect(null, mapDispatch)(CodeEditor);

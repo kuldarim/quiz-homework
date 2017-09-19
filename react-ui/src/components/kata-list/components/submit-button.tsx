@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 const { Button } = require('reactstrap');
 import { IKata, putAlerts, putSubmit, IState } from '../../../redux/reducers/reducer';
 
-export interface ISubmitProps {
+export interface ISubmitButtonProps {
   index: number,
   katas: IKata[],
   user: string,
@@ -11,7 +11,7 @@ export interface ISubmitProps {
   putAlerts: typeof putAlerts,
 }
 
-export const Submit: React.SFC<ISubmitProps> = (props) => {
+export const SubmitButton: React.SFC<ISubmitButtonProps> = (props) => {
   const { index, user, katas, putSubmit, putAlerts } = props;
 
   const submit = () => {
@@ -45,4 +45,4 @@ export const Submit: React.SFC<ISubmitProps> = (props) => {
 const mapState = ({ katas, user }: IState) => ({ katas, user });
 const mapDispatch = { putSubmit, putAlerts };
 
-export default connect(mapState, mapDispatch)(Submit);
+export default connect(mapState, mapDispatch)(SubmitButton);
