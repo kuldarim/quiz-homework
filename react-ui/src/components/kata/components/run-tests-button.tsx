@@ -13,14 +13,18 @@ export interface IRunTestsButtonProps {
 export const RunTestsButton: React.SFC<IRunTestsButtonProps> = (props) => {
   const { kata, putAlerts, putChangeTestStatus } = props;
 
-  const runTests = () => kata.tests.forEach(({param, result}, testId: number) =>
-    worker({solution: kata.solution, param, result, kataId: kata.id, testId})
+  const runTests = () => kata.tests.forEach(({param, result}, testId: number) => {
+    if (!kata.solution) {
+      putAlerts({katas: true});
+    } else {
+      worker({solution: kata.solution, param, result, kataId: kata.id, testId})
       .then(({kataId, testId, status}) => {
         putChangeTestStatus(kataId, testId, status);
         putAlerts({});
       })
-      .catch(() => putAlerts({tests: true})),
-  );
+      .catch(() => putAlerts({tests: true}));
+    }
+  });
 
   return (
     <Button onClick={runTests} color="primary">Run tests!</Button>
