@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash';
+const isEqual = require('lodash.isequal');
 
 export interface IWorkerProps {
   solution: string,
