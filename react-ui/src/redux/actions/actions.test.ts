@@ -1,6 +1,6 @@
 import * as actions from './actions';
 import * as types from '../constants/action-types';
-import { IAlert, IKata } from '../reducers/reducer';
+import { IKata, IAlert } from '../constants/interfaces';
 
 describe('actions', () => {
   it('should create an action to change solution', () => {

@@ -1,4 +1,3 @@
-import { IKata, IState } from '../../redux/reducers/reducer';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Kata from '../kata/kata';
@@ -7,6 +6,7 @@ import UserNameInput from './components/user-name-input';
 import SubmitButton from './components/submit-button';
 import Alerts from './components/alerts';
 const Carousel = require('nuka-carousel');
+import { IKata, IState } from '../../redux/constants/interfaces';
 import './katas-list.css';
 
 export interface IKatasListProps {

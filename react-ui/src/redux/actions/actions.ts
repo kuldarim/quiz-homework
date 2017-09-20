@@ -1,5 +1,5 @@
-import { IKata, IAlert } from '../reducers/reducer';
 import { GET_ALL_KATAS, CHANGE_STATUS, CHANGE_SOLUTION, CHANGE_USER, SET_ALERTS } from '../constants/action-types';
+import { IKata, IAlert } from '../constants/interfaces';
 
 export const getKatas = (katas: IKata[]) => ({type: GET_ALL_KATAS, katas});
 export const changeTestStatus = (

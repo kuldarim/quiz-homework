@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IKata } from '../../redux/reducers/reducer';
 const { Table } = require('reactstrap');
 import './kata-tests-results-displayer.css';
+import { IKata } from '../../redux/constants/interfaces';
 
 interface IProp {
   kata: IKata;

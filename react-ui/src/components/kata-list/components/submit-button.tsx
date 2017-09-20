@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { IKata, IState } from '../../../redux/constants/interfaces';
+import { putSubmit, putAlerts } from '../../../redux/dispatchers/dispatchers';
 const { Button } = require('reactstrap');
-import { IKata, putAlerts, putSubmit, IState } from '../../../redux/reducers/reducer';
 
 export interface ISubmitButtonProps {
   index: number,

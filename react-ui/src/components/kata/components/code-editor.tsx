@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
+import { IKata } from '../../../redux/constants/interfaces';
+import { putChangeSolution } from '../../../redux/dispatchers/dispatchers';
 
-import { putChangeSolution, IKata } from '../../../redux/reducers/reducer';
 
 export interface ICodeEditorProps {
   kata: IKata;

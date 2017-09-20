@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IAlert, IState } from '../../../redux/reducers/reducer';
+import { IAlert, IState } from '../../../redux/constants/interfaces';
 const { Alert } = require('reactstrap');
 
 export interface IAlertsProps {

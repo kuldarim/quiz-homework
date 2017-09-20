@@ -1,10 +1,9 @@
-import { IKata } from '../../redux/reducers/reducer';
 import * as React from 'react';
-
 import MarkDown from './components/markdown';
 import RunTestsButton from './components/run-tests-button';
 import CodeEditor from './components/code-editor';
 import './kata.css';
+import { IKata } from '../../redux/constants/interfaces';
 
 export interface IKataProps {
   kata: IKata
