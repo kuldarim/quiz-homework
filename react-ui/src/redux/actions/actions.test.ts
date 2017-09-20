@@ -53,7 +53,7 @@ describe('actions', () => {
     expect(actions.getKatas(katas)).toEqual(expectedAction);
   });
 
-  it('should create an action to change solution', () => {
+  it('should create an action to change alerts', () => {
     const alerts: IAlert = {tests: true};
     const expectedAction = {
       type: types.SET_ALERTS,
