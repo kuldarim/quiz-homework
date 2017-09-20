@@ -1,7 +1,7 @@
 {
-  "name": "heroku-cra-node",
+  "name": "react-quiz",
   "version": "1.0.0",
-  "description": "How to use create-react-app with a custom Node API on Heroku",
+  "description": "React quiz",
   "engines": {
     "node": "6.11.x"
   },
@@ -20,12 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mars/heroku-cra-node.git"
+    "url": "https://github.com/kuldarim/quiz-homework.git"
   },
   "keywords": [
     "node",
     "heroku",
-    "create-react-app",
     "react"
   ],
   "license": "MIT",
