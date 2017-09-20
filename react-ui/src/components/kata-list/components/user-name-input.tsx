@@ -15,9 +15,9 @@ export const UserNameInput: React.SFC<IUserNameInputProps> = (props) => {
 
   return (
     <InputGroup>
-        <InputGroupAddon>Enter user name: </InputGroupAddon>
-        <Input onChange={handleIncrement}/>
-      </InputGroup>
+      <InputGroupAddon>Enter user name: </InputGroupAddon>
+      <Input onChange={handleIncrement}/>
+    </InputGroup>
   );
 };
 
