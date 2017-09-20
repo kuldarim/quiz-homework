@@ -7,7 +7,6 @@ import 'brace/theme/monokai';
 import { IKata } from '../../../redux/constants/interfaces';
 import { putChangeSolution } from '../../../redux/dispatchers/dispatchers';
 
-
 export interface ICodeEditorProps {
   kata: IKata;
   putChangeSolution: typeof putChangeSolution;
