@@ -1,5 +1,4 @@
 import * as React from 'react';
-const { Table } = require('reactstrap');
 import './kata-tests-results-displayer.css';
 import { IKata } from '../../redux/constants/interfaces';
 
@@ -19,30 +18,25 @@ class KataTestResultsDisplayer extends React.Component<IProp> {
         <div className="row">
           <div className="col-sm-12">
             <h3>Test results:</h3>
-            <Table>
-              <thead>
-                <tr>
-                  <th>Input</th>
-                  <th>Passed</th>
-                </tr>
-              </thead>
-              <tbody>
-                  {
-                    this.props.kata.tests && this.props.kata.tests.map(
-                    (test, i: number) => {
-                    return (
-                      <tr key={`${i}-test`}>
-                        <td>{test.param.toString()}</td>
-                        <td>{test.status ? 'true' : 'false'}</td>
-                      </tr>
-                    );
-                  })
-                }
-              </tbody>
-            </Table>
+            <div className="container">
+              <div className="row table-header">
+                <div className="col-sm-8">Input</div>
+                <div className="col-sm-4">Passed</div>
+              </div>
+              {
+                this.props.kata.tests && this.props.kata.tests.map((test, i: number) => {
+                  return (
+                    <div className="row table-row" key={`${i}-test`}>
+                      <div className="col-sm-8">{test.param.toString()}</div>
+                      <div className="col-sm-4">{test.status ? 'Passed' : 'Failed'}</div>
+                    </div>
+                  );
+                })
+              }
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }

@@ -1,3 +1,15 @@
-td {
-  word-break: break-all;
+.table-header {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.table-header, .table-row {
+  padding: 10px 5px;
+}
+
+.table-row {
+  transition: background .2s ease-in-out;
+}
+
+.table-row:hover {
+  background: rgba(0, 0, 0, 0.05);
 }

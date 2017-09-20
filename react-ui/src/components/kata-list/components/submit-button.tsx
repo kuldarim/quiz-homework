@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { IKata, IState } from '../../../redux/constants/interfaces';
 import { putSubmit, putAlerts } from '../../../redux/dispatchers/dispatchers';
 const { Button } = require('reactstrap');
+import './submit-button.css';
 
 export interface ISubmitButtonProps {
   index: number,
@@ -30,7 +31,7 @@ export const SubmitButton: React.SFC<ISubmitButtonProps> = (props) => {
   return (
     index === katas.length - 1
       ? (
-        <div className="container">
+        <div className="container align-right">
           <Button
             onClick={submit}
             color="primary"

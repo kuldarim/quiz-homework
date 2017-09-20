@@ -33,7 +33,6 @@ app.get('/api', function (req, res) {
 });
 
 app.post('/api/save', function (req, res) {
-  console.log(req.body);
   res.set('Content-Type', 'application/json');
   refResults.push(req.body);
   res.send(req.body)

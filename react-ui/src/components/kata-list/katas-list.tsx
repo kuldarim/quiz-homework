@@ -26,6 +26,10 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
             impact your final result. If test fails it you will get it marked as false. In case of
             error in your code check console, you will see the error message output.
           </i>
+          <i className="container">
+            You can access params with params[0]. Try console.log(params[0]). Basically you need to modify
+            this object to get desired output.
+          </i>
         </div>
         <Alerts />
         <Carousel slideWidth={1} initialSlideHeight={800} margin={'auto'} dragging={false} swiping={false}>
