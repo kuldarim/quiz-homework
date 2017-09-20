@@ -8,12 +8,6 @@ export interface IWorkerProps {
   testId: number,
 }
 
-/*
-* @param solution function to evaluate
-* @param param params to pass for function to test
-* @param result expected result of evaluation
-* @param callback code to execute with tests results
-*/
 const worker = (params: IWorkerProps) => {
   return new Promise((resolve, reject) => {
     const {

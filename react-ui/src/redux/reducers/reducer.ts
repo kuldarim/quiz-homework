@@ -1,12 +1,7 @@
 import axios from 'axios';
 import worker from '../../utils/worker';
-///////////////// CONSTANTS /////////////////////
-
-const GET_ALL_KATAS = 'GET_ALL_KATAS';
-const CHANGE_STATUS = 'CHANGE_STATUS';
-const CHANGE_SOLUTION = 'CHANGE_SOLUTION';
-const CHANGE_USER = 'CHANGE_USER';
-const SET_ALERTS = 'SET_ALERTS';
+import { getKatas, changeTestStatus, changeSolution, changeUser, setAlerts } from '../actions/actions';
+import { GET_ALL_KATAS, CHANGE_STATUS, CHANGE_SOLUTION, CHANGE_USER, SET_ALERTS } from '../constants/action-types';
 
 export interface IState {
   katas: IKata[],
@@ -36,18 +31,6 @@ export interface IAlert {
   tests?: boolean,
   submit?: boolean[]
 }
-
-///////////////// ACTIONS //////////////
-
-const getKatas = (katas: IKata[]) => ({type: GET_ALL_KATAS, katas});
-const changeTestStatus = (
-  kataId: number,
-  testId: number,
-  status: boolean,
-) => ({type: CHANGE_STATUS, kataId, testId, status});
-const changeSolution = (kataId: number, solution: string) => ({type: CHANGE_SOLUTION, kataId, solution});
-const changeUser = (user: string) => ({type: CHANGE_USER, user});
-const setAlerts = (alerts: IAlert) => ({type: SET_ALERTS, alerts});
 
 ///////////////// REDUCER/////////////////////
 
