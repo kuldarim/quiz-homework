@@ -21,7 +21,7 @@ const worker = (params: IWorkerProps) => {
     const response = `
     self.onmessage=function(){
         postMessage(
-          eval(((...params) => {${solution}})(${JSON.stringify(param)}))
+          eval(((params) => {${solution}})(${JSON.stringify(param)}))
         )
        self.close()
       }

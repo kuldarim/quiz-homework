@@ -27,7 +27,7 @@ export const KatasList: React.SFC<IKatasListProps> = (props) => {
             error in your code check console, you will see the error message output.
           </i>
           <i className="container">
-            You can access params with params[0]. Try console.log(params[0]). Basically you need to modify
+            You can access params with params. Try console.log(params). Basically you need to modify
             this object to get desired output.
           </i>
         </div>

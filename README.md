@@ -7,8 +7,9 @@ React quiz with typescript, redux, firebase, node.js.
 Quiz consists of 4 katas, which user needs to solve. Each kata has several tests. All of them
 needs to pass otherwise solution is incorrect. User can run predifined tests various times.
 
-To access the test parameters user can calling `params[0]`. So basically you need to modify
-`params[0]` and return desired output.
+To access the test parameters user can calling `params`. So basically you need to modify
+`params` and return desired output. For example first kata solution is 
+`return params.filter(p => ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"].indexOf(p) === -1);`
 
 ## Technical side
 
